@@ -766,12 +766,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/schmittjoh/serializer",
-                "reference": "0.11.0"
+                "reference": "f95ba241ba48e39d2f836e45ccab01a00e336073"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/0.11.0",
-                "reference": "0.11.0",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/f95ba241ba48e39d2f836e45ccab01a00e336073",
+                "reference": "f95ba241ba48e39d2f836e45ccab01a00e336073",
                 "shasum": ""
             },
             "require": {
@@ -793,7 +793,7 @@
             "suggest": {
                 "symfony/yaml": "Required if you'd like to serialize data to YAML format."
             },
-            "time": "2013-01-29 10:56:07",
+            "time": "2013-02-14 15:25:21",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -813,7 +813,7 @@
                 {
                     "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -975,12 +975,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog",
-                "reference": "9dc4ffc071725c22fc5aea9755d4ca7ea06f5de0"
+                "reference": "48f22f4519ed17b4754c4b561101d19aeb0d0236"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/9dc4ffc071725c22fc5aea9755d4ca7ea06f5de0",
-                "reference": "9dc4ffc071725c22fc5aea9755d4ca7ea06f5de0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/48f22f4519ed17b4754c4b561101d19aeb0d0236",
+                "reference": "48f22f4519ed17b4754c4b561101d19aeb0d0236",
                 "shasum": ""
             },
             "require": {
@@ -999,7 +999,7 @@
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
                 "raven/raven": "Allow sending log messages to a Sentry server"
             },
-            "time": "2013-02-11 10:28:59",
+            "time": "2013-02-13 18:09:50",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1368,12 +1368,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle",
-                "reference": "v2.1.1-beta1"
+                "reference": "v2.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/v2.1.1-beta1",
-                "reference": "v2.1.1-beta1",
+                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/v2.1.1",
+                "reference": "v2.1.1",
                 "shasum": ""
             },
             "require": {
@@ -1431,12 +1431,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle",
-                "reference": "v2.2.0-RC2"
+                "reference": "df2a8e33bdb98f848dce28e0d14e318fea71b45f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/v2.2.0-RC2",
-                "reference": "v2.2.0-RC2",
+                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/df2a8e33bdb98f848dce28e0d14e318fea71b45f",
+                "reference": "df2a8e33bdb98f848dce28e0d14e318fea71b45f",
                 "shasum": ""
             },
             "require": {
@@ -1449,7 +1449,7 @@
             "require-dev": {
                 "symfony/yaml": ">=2.2-beta2,<3.0"
             },
-            "time": "2013-02-11 10:49:31",
+            "time": "2013-02-14 10:33:50",
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1488,13 +1488,13 @@
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/SwiftmailerBundle",
-                "reference": "v2.2.0-BETA2"
+                "url": "https://github.com/symfony/SwiftmailerBundle.git",
+                "reference": "v2.2.0-BETA1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.2.0-BETA2",
-                "reference": "v2.2.0-BETA2",
+                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.2.0-BETA1",
+                "reference": "v2.2.0-BETA1",
                 "shasum": ""
             },
             "require": {
@@ -1542,13 +1542,13 @@
             "version": "2.2.x-dev",
             "source": {
                 "type": "git",
-                "url": "git://github.com/symfony/symfony.git",
-                "reference": "a4ac5e6374fe27ef68031e743447700fde348341"
+                "url": "https://github.com/symfony/symfony.git",
+                "reference": "83fc5ed98f26ffbf5b8852950e7bb80f824b4e53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/a4ac5e6374fe27ef68031e743447700fde348341",
-                "reference": "a4ac5e6374fe27ef68031e743447700fde348341",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/83fc5ed98f26ffbf5b8852950e7bb80f824b4e53",
+                "reference": "83fc5ed98f26ffbf5b8852950e7bb80f824b4e53",
                 "shasum": ""
             },
             "require": {
@@ -1600,7 +1600,7 @@
                 "doctrine/orm": ">=2.2,<3.0,>=2.2.3",
                 "propel/propel1": "1.6.*"
             },
-            "time": "2013-02-11 15:24:43",
+            "time": "2013-02-15 09:56:14",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1738,13 +1738,13 @@
             "target-dir": "Walterra/J4p5Bundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/walterra/J4p5Bundle",
-                "reference": "c5b7e6143f732e997b5f4ec25de0b640154722b5"
+                "url": "https://github.com/walterra/J4p5Bundle.git",
+                "reference": "8de77818d96f0061833103226a600c18dce3505b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/walterra/J4p5Bundle/zipball/c5b7e6143f732e997b5f4ec25de0b640154722b5",
-                "reference": "c5b7e6143f732e997b5f4ec25de0b640154722b5",
+                "url": "https://api.github.com/repos/walterra/J4p5Bundle/zipball/8de77818d96f0061833103226a600c18dce3505b",
+                "reference": "8de77818d96f0061833103226a600c18dce3505b",
                 "shasum": ""
             },
             "require": {
@@ -1753,7 +1753,7 @@
             "require-dev": {
                 "symfony/framework-bundle": ">=2.1,<2.2-dev"
             },
-            "time": "2013-02-12 14:09:06",
+            "time": "2013-02-15 20:44:39",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {

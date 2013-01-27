@@ -31,8 +31,8 @@ class ViewController extends FOSRestController
             } else {
                 $doc = json_decode($doc[0]["body"], true);
                 $view = $doc["views"][$viewname];
-                $mapCode = $view["map"];
-                $reduceCode = $view["reduce"];
+                $mapCode = (array_key_exists("map", $view)) ? $view["map"] : "";
+                $reduceCode = (array_key_exists("reduce", $view)) ? $view["reduce"] : "";
                 $allDocs = DocumentModel::getAllDocs($dbname, $this, true); // last argument true gets the actual documents
 
                 $transformedDocs = array();

@@ -62,6 +62,3 @@ php composer.phar update
 php composer.phar dump-autoload --optimize
 chmod -R 777 app/cache
 </pre>
-
-
-
