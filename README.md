@@ -4,7 +4,7 @@ README
 What is couchphpdb?
 -------------------
 
-Without prejudice, however with all the implied naivety, maybe even stupidity, yes, this is an attempt to build an Apache CouchDB implementation of yours truly document database in PHP and MySQL. Read again: This is not another PHP library to access CouchDB, it's a variant of CouchDB itself using PHP and MySQL under the hood.
+Without prejudice, however with all the implied naivety, maybe even stupidity, yes, this is an attempt to build an Apache CouchDB derivative in PHP and MySQL. Read again: This is not another PHP library to access CouchDB, it's a variant of CouchDB itself using PHP and MySQL under the hood.
 
 Be aware that this is still just a proof of concept with pre alpha status. In it's current state it's more or less a little demo. Don't run it in production.
 
@@ -33,7 +33,7 @@ So directly via HTTP or Futon for now you may:
 
 * Create Databases (delete not implemented yet)
 * Create, update and delete documents
-* Create, update and delete design documents, yes this means you may create native Javascript based map/reduce views!
+* Create, update and delete design documents, yes this means you may create native Javascript based map/reduce views! However, be aware that views are not persistent for now.
 
 What's missing
 --------------
