@@ -1,0 +1,17 @@
+13.02.2013
+
+* basic functionality implemented
+  * create and delete databases
+  * create, update and delete document
+  * run views with native javascript map functions
+  * run reduce with native couchdb functions (_sum, _count, _stats)
+  * features Futon from CouchDB 1.2.1
+
+28.01.2013
+
+* initialized repository (via http://symfony.com/doc/current/cookbook/workflow/new_project_git.html)
+* updated symfony to run (via http://symfony.com/doc/current/book/installation.html#installation-updating-vendors)
+* installed http://jmsyst.com/bundles/JMSSerializerBundle
+* fixed composer.json dependencies to work with FOSRestBundle
+
+

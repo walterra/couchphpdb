@@ -1,0 +1,72 @@
+_all_docs:
+    pattern: /{dbname}/_all_docs
+    defaults: { _controller: WalterraCouchphpdbBundle:Document:allDocs, _format: json }
+    requirements:
+        _method: GET
+
+_doc:
+    pattern: /{dbname}/{docname}
+    defaults: { _controller: WalterraCouchphpdbBundle:Document:doc, _format: json }
+    
+_design_doc:
+    pattern: /{dbname}/_design/{designdocname}
+    defaults: { _controller: WalterraCouchphpdbBundle:Document:designDoc, _format: json }
+    
+_design_view:
+    pattern: /{dbname}/_design/{designdocname}/_view/{viewname}
+    defaults: { _controller: WalterraCouchphpdbBundle:View:view, _format: json }
+    
+_config_query_servers:
+    pattern: /_config/query_servers/ 
+    defaults: { _controller: WalterraCouchphpdbBundle:Config:queryServers, _format: json }
+    requirements:
+        _method: GET
+
+_config_native_query_servers:
+    pattern: _config/native_query_servers/
+    defaults: { _controller: WalterraCouchphpdbBundle:Config:nativeQueryServers, _format: json }
+    requirements:
+        _method: GET
+
+_session:
+    pattern: _session
+    defaults: { _controller: WalterraCouchphpdbBundle:Session:login, _format: json }
+    requirements:
+        _method: GET
+
+_all_dbs:
+    pattern: /_all_dbs
+    defaults: { _controller: WalterraCouchphpdbBundle:Database:allDb, _format: json }
+    requirements:
+        _method: GET
+
+_uuids:
+    pattern: /_uuids/
+    defaults: { _controller: WalterraCouchphpdbBundle:Database:uuids, _format: json }
+    requirements:
+        _method: GET
+
+_db_name:
+    pattern: /{dbname}/
+    defaults: { _controller: WalterraCouchphpdbBundle:Database:db, _format: json }
+
+_welcome:
+    pattern: /
+    defaults: { _controller: WalterraCouchphpdbBundle:Welcome:index, _format: json }
+    requirements:
+        _method: GET
+
+_wdt:
+    resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
+    prefix:   /_wdt
+
+_profiler:
+    resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
+    prefix:   /_profiler
+
+_configurator:
+    resource: "@SensioDistributionBundle/Resources/config/routing/webconfigurator.xml"
+    prefix:   /_configurator
+
+_main:
+    resource: routing.yml
