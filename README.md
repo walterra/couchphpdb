@@ -50,12 +50,18 @@ Installation
 
 More info on this will come but this should get you started.
 
-* Download or clone
-* Set your Apache DocumentRoot to the /web directory
-* Make sure mod_rewrite works
-* couchphpdb uses Symfony2 and Composer, so to set everything up, run the following commands in the root folder of couchphpdb
+1. Download or clone
+2. Set your Apache DocumentRoot to the /web directory
+3. Make sure mod_rewrite works
+4. copy app/config/parameters.yml.dist to app/config/parameters.yml and adjust the database settings 
+5. couchphpdb uses Symfony2 and Composer, so to set everything up, run the following commands in the root folder of couchphpdb
 
-    php composer.phar install
-    php composer.phar update
-    php composer.phar dump-autoload --optimize
-    chmod -R 777 app/cache
+<pre>
+php composer.phar install
+php composer.phar update
+php composer.phar dump-autoload --optimize
+chmod -R 777 app/cache
+</pre>
+
+
+
