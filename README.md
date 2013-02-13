@@ -16,11 +16,11 @@ Maybe it's just a lil' tribute to the LAMP stack. Kidding aside, more mature it 
 How is it done?
 ---------------
 
-* Documents are stored inspired by FriendFeed's approach to store schemaless data in MySQL [http://backchannel.org/blog/friendfeed-schemaless-mysql]
+* Documents are stored inspired by [FriendFeed's approach to store schemaless data in MySQL](http://backchannel.org/blog/friendfeed-schemaless-mysql)
 
-* PHP framework Symfony 2 and mainly FOSRestBundle act to simulate a CouchDB compatible REST API.
+* PHP framework [Symfony 2](https://github.com/symfony/symfony) and mainly [FOSRestBundle](https://github.com/FriendsOfSymfony/FOSRestBundle) act to simulate a CouchDB compatible REST API.
 
-* Last but not least, part of the game is J4p5, a Javascript interpreter for PHP. It translates CouchDB's native Javascript views to PHP.
+* Last but not least, part of the game is [J4p5](https://github.com/walterra/J4p5Bundle), a Javascript interpreter for PHP. It translates CouchDB's native Javascript views to PHP.
 
 What's working
 --------------
