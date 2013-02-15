@@ -6,6 +6,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use FOS\RestBundle\Controller\FOSRestController;
 use Walterra\CouchphpdbBundle\Model\DatabaseModel;
+use Walterra\CouchphpdbBundle\Model\DocumentModel;
 
 class DatabaseController extends FOSRestController
 {
@@ -76,7 +77,7 @@ class DatabaseController extends FOSRestController
                     $content = $this->get("request")->getContent();
                     if (!empty($content)) $doc = json_decode($content, true); // 2nd param to get as array
                    
-                    DatabaseModel::insertDocument($dbname, $doc, $controller);
+                    DocumentModel::insertDocument($dbname, $doc, $this);
 
                     // prepare response
                     $data = array(
@@ -86,6 +87,23 @@ class DatabaseController extends FOSRestController
                     );
                     $statusCode = 200;
                     
+                    break;
+                case "DELETE":
+                    // check if database exists
+                    if(!DatabaseModel::dbExists($dbname, $this)){
+                        $data = array(
+                            "error" => "not_found",
+                            "reason" => "missing"
+                        );
+                        $statusCode = 404;
+                    } else {
+                        // delete database
+                        $r = DatabaseModel::deleteDb($dbname, $this);
+                        $data = array(
+                            "ok" => "true"
+                        );
+                        $statusCode = 200;
+                    }
                     break;
             }
         }

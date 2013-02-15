@@ -31,7 +31,7 @@ As you access CouchDB via HTTP only, it's administration interface Futon is 'jus
 
 So directly via HTTP or Futon for now you may:
 
-* Create Databases (delete not implemented yet)
+* Create and delete Databases
 * Create, update and delete documents
 * Create, update and delete design documents, yes this means you may create native Javascript based map/reduce views! However, be aware that views are not persistent for now.
 

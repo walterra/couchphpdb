@@ -7,9 +7,9 @@ use Walterra\CouchphpdbBundle\Model\DatabaseModel;
 class DocumentModel
 {
    static public function fetchDocument($dbname, $docname, $controller){
-       $conn = $controller->get('database_connection');
+       $connection = $controller->get('database_connection');
         
-       $q = $conn->createQueryBuilder();
+       $q = $connection->createQueryBuilder();
        $doc = $q->select('*')
           ->from($dbname, 'docs')
           ->setMaxResults(1)
@@ -22,26 +22,46 @@ class DocumentModel
    
     static public function insertDocument($dbname, $doc, $controller)
     {
-        // create an UUID and add it to the document
-        $doc["_id"] = DatabaseModel::getUUID();
+        $olddoc = array();
+        // check if document exists
+        if(isset($doc["_id"])){
+            $olddoc = self::fetchDocument($dbname, $doc["_id"], $controller);
+        } else {
+            // create an UUID and add it to the document
+            $doc["_id"] = DatabaseModel::getUUID();
+        }
         // just a dummy for now so something's there
         $doc["_rev"] = "1-" . $doc["_id"];
 
-        // add document to database
-        $document = array(
+        // prepare document
+        $dbData = array(
             "id" => $doc["_id"],
             "body" => json_encode($doc)
         );
-        $conn = $controller->get('database_connection');
-        $conn->insert($dbname, $dbData);
+
+        // add/update document within database
+        $connection = $controller->get('database_connection');
+        if(count($olddoc) == 0){
+            // create new document
+            $connection->insert($dbname, $dbData);
+        } else {
+            // update existing document
+            $connection->update($dbname, $dbData, array('id' => $doc["_id"]));
+        }
+        
+        return array(
+            "ok" => true,
+            "id" => $doc["_id"],
+            "rev" => $doc["_rev"]
+        );
     }
 
     static public function getAllDocs($dbname, $controller, $includeDocs = false)
     {
         // let's get all the docs!
 
-        $conn = $controller->get('database_connection');
-        $q = $conn->createQueryBuilder();
+        $connection = $controller->get('database_connection');
+        $q = $connection->createQueryBuilder();
         $q->select('*')
           ->from($dbname, 'docs')
           ->orderBy('docs.id', self::getOrder($controller));

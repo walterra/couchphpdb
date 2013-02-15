@@ -1,3 +1,9 @@
+_bulk_docs:
+    pattern: /{dbname}/_bulk_docs
+    defaults: { _controller: WalterraCouchphpdbBundle:Document:bulkDocs, _format: json }
+    requirements:
+        _method: POST
+
 _all_docs:
     pattern: /{dbname}/_all_docs
     defaults: { _controller: WalterraCouchphpdbBundle:Document:allDocs, _format: json }
@@ -41,14 +47,14 @@ _all_dbs:
         _method: GET
 
 _uuids:
-    pattern: /_uuids/
-    defaults: { _controller: WalterraCouchphpdbBundle:Database:uuids, _format: json }
-    requirements:
-        _method: GET
+    pattern: /_uuids{trailingSlash}
+    defaults: { _controller: WalterraCouchphpdbBundle:Database:uuids, _format: json, trailingSlash : "/" }
+    requirements: { _method: GET, trailingSlash : "[/]{0,1}" }
 
 _db_name:
-    pattern: /{dbname}/
-    defaults: { _controller: WalterraCouchphpdbBundle:Database:db, _format: json }
+    pattern: /{dbname}{trailingSlash}
+    defaults: { _controller: WalterraCouchphpdbBundle:Database:db, _format: json, trailingSlash : "/" }
+    requirements: { trailingSlash : "[/]{0,1}" }
 
 _welcome:
     pattern: /

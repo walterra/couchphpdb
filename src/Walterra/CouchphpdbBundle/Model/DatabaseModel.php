@@ -38,15 +38,15 @@ class DatabaseModel
     
     static public function dbExists($dbName, $controller)
     {
-        $conn = $controller->get('database_connection');
-        $dbs = $conn->fetchAll("SHOW TABLES LIKE '".$dbName."'");
+        $connection = $controller->get('database_connection');
+        $dbs = $connection->fetchAll("SHOW TABLES LIKE '".$dbName."'");
         return (count($dbs) == 0) ? false : true;
     }
 
     static public function getRowCount($dbname, $controller)
     {
-        $conn = $controller->get('database_connection');
-        $c = $conn->createQueryBuilder()
+        $connection = $controller->get('database_connection');
+        $c = $connection->createQueryBuilder()
                   ->select('docs.id') 
                   ->from($dbname, 'docs')
                   ->execute();
@@ -55,9 +55,9 @@ class DatabaseModel
 
     static public function getDiskSize($dbname, $controller)
     {
-        $conn = $controller->get('database_connection');
+        $connection = $controller->get('database_connection');
      
-        $size = $conn->createQueryBuilder()
+        $size = $connection->createQueryBuilder()
                      ->select('(data_length+index_length) tablesize') 
                      ->from('information_schema.tables', 't')
                      ->where('t.table_schema=\'couchphpdb\'')
@@ -70,10 +70,10 @@ class DatabaseModel
 
     static public function createDb($dbName, $controller)
     {
-        $conn = $controller->get('database_connection');
+        $connection = $controller->get('database_connection');
         
         // via http://backchannel.org/blog/friendfeed-schemaless-mysql
-        $conn->query("CREATE TABLE ".$dbName." (
+        $connection->query("CREATE TABLE ".$dbName." (
             added_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             id VARCHAR(256) NOT NULL,
             updated TIMESTAMP NOT NULL,
@@ -84,12 +84,21 @@ class DatabaseModel
         
         return (self::dbExists($dbName, $controller)) ? true : false;
     }
+    
+    static public function deleteDb($dbName, $controller)
+    {
+        $connection = $controller->get('database_connection');
+        
+        // via http://stackoverflow.com/questions/8526534/how-to-truncate-a-table-using-doctrine-in-symfony
+        $platform   = $connection->getDatabasePlatform();
+        return $connection->executeUpdate($platform->getDropTableSQL($dbName, true /* whether to cascade */));
+    }
 
     static public function getAllDbs($controller)
     {
-        $conn = $controller->get('database_connection');
+        $connection = $controller->get('database_connection');
 
-        $dbs = $conn->fetchAll("SHOW TABLES");
+        $dbs = $connection->fetchAll("SHOW TABLES");
         $data = array();
         foreach($dbs as $db){
             foreach($db as $table)

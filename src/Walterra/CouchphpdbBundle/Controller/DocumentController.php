@@ -45,23 +45,8 @@ class DocumentController extends FOSRestController
                     $content = $this->get("request")->getContent();
                     if (!empty($content)) $doc = json_decode($content, true); // 2nd param to get as array
 
-                    // just a dummy for now so something's there
-                    $doc["_rev"] = "1-" . $doc["_id"];
+                    DocumentModel::insertDocument($dbname, $doc, $this);
 
-                    // add document to database
-                    $dbData = array(
-                        "id" => $doc["_id"],
-                        "body" => json_encode($doc)
-                    );
-
-                    $conn = $this->get('database_connection');
-                    if(count($olddoc) == 0){
-                        // create new document
-                        $conn->insert($dbname, $dbData);
-                    } else {
-                        // update existing document
-                        $conn->update($dbname, $dbData, array('id' => $doc["_id"]));
-                    }
                     // prepare response
                     $data = array(
                         "ok" => true,
@@ -119,6 +104,23 @@ class DocumentController extends FOSRestController
             $statusCode = $checkDB->statusCode;
         }
         
+        $view = $this->view($data, $statusCode);
+        $view->setFormat('json');
+        
+        return $this->get('fos_rest.view_handler')->handle($view);  
+    }
+    
+    public function bulkDocsAction($dbname)
+    {
+        $content = $this->get("request")->getContent();
+        $docs = array();
+        $data = array();
+        if (!empty($content)) $docs = json_decode($content, true); // 2nd param to get as array
+        foreach($docs["docs"] as $doc)
+            $data[] = DocumentModel::insertDocument($dbname, $doc, $this);
+
+        $statusCode = 200;
+
         $view = $this->view($data, $statusCode);
         $view->setFormat('json');
         
