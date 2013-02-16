@@ -1739,12 +1739,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/walterra/J4p5Bundle.git",
-                "reference": "8de77818d96f0061833103226a600c18dce3505b"
+                "reference": "2eea0924a230d3437b558d37b871ad0db9f238e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/walterra/J4p5Bundle/zipball/8de77818d96f0061833103226a600c18dce3505b",
-                "reference": "8de77818d96f0061833103226a600c18dce3505b",
+                "url": "https://api.github.com/repos/walterra/J4p5Bundle/zipball/2eea0924a230d3437b558d37b871ad0db9f238e8",
+                "reference": "2eea0924a230d3437b558d37b871ad0db9f238e8",
                 "shasum": ""
             },
             "require": {
@@ -1753,7 +1753,7 @@
             "require-dev": {
                 "symfony/framework-bundle": ">=2.1,<2.2-dev"
             },
-            "time": "2013-02-15 20:44:39",
+            "time": "2013-02-16 02:57:38",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {

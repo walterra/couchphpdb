@@ -55,6 +55,36 @@ class DocumentModel
             "rev" => $doc["_rev"]
         );
     }
+    
+    static public function bulkInsertDocuments($dbname, $docs, $controller)
+    {
+        $connection = $controller->get('database_connection');
+        
+        $r = array();
+        $connection->beginTransaction();
+        try {
+            foreach ($docs["docs"] as $doc) {
+                if(!isset($doc["_id"])) $doc["_id"] = DatabaseModel::getUUID();
+                $doc["_rev"] = "1-" . $doc["_id"];
+                $dbData = array(
+                    "id" => $doc["_id"],
+                    "body" => json_encode($doc)
+                );
+                
+                $connection->insert($dbname, $dbData);
+                $r[] = array(
+                    "ok" => true,
+                    "id" => $doc["_id"],
+                    "rev" => $doc["_rev"]
+                );
+            }
+            $connection->commit();
+            return $r;
+        } catch(Doctrine_Exception $e) {
+            $connection->rollback();
+            return array("error" => "rollback");
+        }
+    }
 
     static public function getAllDocs($dbname, $controller, $includeDocs = false)
     {

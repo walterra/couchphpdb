@@ -116,8 +116,8 @@ class DocumentController extends FOSRestController
         $docs = array();
         $data = array();
         if (!empty($content)) $docs = json_decode($content, true); // 2nd param to get as array
-        foreach($docs["docs"] as $doc)
-            $data[] = DocumentModel::insertDocument($dbname, $doc, $this);
+        
+        $data[] = DocumentModel::bulkInsertDocuments($dbname, $docs, $this);
 
         $statusCode = 200;
 
