@@ -16,7 +16,7 @@ class DocumentController extends FOSRestController
         $data = "";
 
         $checkDB = DatabaseModel::checkDB($dbname, $this);
-        if($checkDB->ok == true){
+        if(isset($checkDB->ok) && $checkDB->ok == true){
             $request = $this->get("request");
             switch($request->getMethod()) {
                 case "GET":

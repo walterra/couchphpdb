@@ -38,7 +38,10 @@ class ViewController extends FOSRestController
                 $transformedDocs = array();
                 foreach($allDocs as $viewDoc)
                 {
-                    $viewDocJson = json_encode($viewDoc["doc"], true);
+                    // let's skip design documents
+                    if(substr( $viewDoc["id"], 0, 8 ) !== "_design/")
+                    {
+                        $viewDocJson = json_encode($viewDoc["doc"], true);
                     
 // wrap the document and map function from 'couchdb' in 
 // javascript wrapper code which we may execute via j4p5
@@ -55,26 +58,27 @@ var map = $mapCode;
 map(doc);
     
 EOD;
-                    // define this special external function so we may access the output
-                    // from the map function later on
-                    js::define("couchphpdb", array("output" => "js_output"));
+                        // define this special external function so we may access the output
+                        // from the map function later on
+                        js::define("couchphpdb", array("output" => "js_output"));
 
-                    // let's buffer the output from the javascript interpreter
-                    ob_start(); 
-                    // run the js code.
-                    js::run($code);
-                    // flush the buffer, we don't need it and access data via the output class
-                    ob_get_clean();
+                        // let's buffer the output from the javascript interpreter
+                        ob_start(); 
+                        // run the js code.
+                        js::run($code);
+                        // flush the buffer, we don't need it and access data via the output class
+                        ob_get_clean();
                     
-                    $out = output::getInstance(); // get class instance
-                    $data = $out->get();
+                        $out = output::getInstance(); // get class instance
+                        $data = $out->get();
 
-                    // prepare the final document for output
-                    $transformedDocs[] = array(
-                        "id" => $viewDoc["id"],
-                        "key" => json_decode($this->printJS($data["key"]), true),
-                        "value" => json_decode($this->printJS($data["value"]), true)
-                    );
+                        // prepare the final document for output
+                        $transformedDocs[] = array(
+                            "id" => $viewDoc["id"],
+                            "key" => json_decode($this->printJS($data["key"]), true),
+                            "value" => json_decode($this->printJS($data["value"]), true)
+                        );
+                    }
                 }
                 
                 // check if we need to do map+reduce
