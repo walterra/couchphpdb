@@ -62,3 +62,22 @@ php composer.phar update
 php composer.phar dump-autoload --optimize
 chmod -R 777 app/cache
 </pre>
+
+Benchmarks
+----------
+
+Remember, this is not really representative in comparison to the real CouchDB. couchphpdb doesn't feature document versioning and lot's of other stuff.
+Nonetheless I ran some benchmarks using [felixge/couchdb-benchmarks](https://github.com/felixge/couchdb-benchmarks).
+The tests were done in a Debian VM (2 cores, 1GB RAM) on an iMac 21" (2.5Ghz i5, 8GB RAM).
+
+<pre>
+doc insert count: 10000
+insert time: 17.8842 sec
+insert time / doc: 1.79 ms
+inserts / sec: 559.152772
+
+doc insert count: 100000
+insert time: 175.8802 sec
+insert time / doc: 1.76 ms
+inserts / sec: 568.568833
+</pre>
