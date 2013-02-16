@@ -13,8 +13,6 @@ _all_docs:
 _doc:
     pattern: /{dbname}/{docname}
     defaults: { _controller: WalterraCouchphpdbBundle:Document:doc, _format: json }
-    requirements:
-        docname: "[a-zA-Z0-9-_/:\.]+"
     
 _design_doc:
     pattern: /{dbname}/_design/{designdocname}

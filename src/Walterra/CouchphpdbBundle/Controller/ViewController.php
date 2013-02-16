@@ -70,14 +70,16 @@ EOD;
                         ob_get_clean();
                     
                         $out = output::getInstance(); // get class instance
-                        $data = $out->get();
-
-                        // prepare the final document for output
-                        $transformedDocs[] = array(
-                            "id" => $viewDoc["id"],
-                            "key" => json_decode($this->printJS($data["key"]), true),
-                            "value" => json_decode($this->printJS($data["value"]), true)
-                        );
+                        $emits = $out->getAll();
+                        foreach($emits as $emit)
+                        {
+                            $transformedDocs[] = array(
+                                "id" => $viewDoc["id"],
+                                "key" => json_decode($this->printJS($emit["key"]), true),
+                                "value" => json_decode($this->printJS($emit["value"]), true)
+                            );
+                        }
+                        $out->resetMap();
                     }
                 }
                 
