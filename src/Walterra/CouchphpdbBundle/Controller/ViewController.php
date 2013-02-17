@@ -73,10 +73,12 @@ EOD;
                         $emits = $out->getAll();
                         foreach($emits as $emit)
                         {
+                            $key = (is_object($emit["key"])) ? json_decode($this->printJS($emit["key"]), true) : $emit["key"];
+                            $value = (is_object($emit["value"])) ? json_decode($this->printJS($emit["value"]), true) : $emit["key"];
                             $transformedDocs[] = array(
                                 "id" => $viewDoc["id"],
-                                "key" => json_decode($this->printJS($emit["key"]), true),
-                                "value" => json_decode($this->printJS($emit["value"]), true)
+                                "key" => $key,
+                                "value" => $value
                             );
                         }
                         $out->resetMap();
