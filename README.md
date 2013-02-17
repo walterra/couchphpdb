@@ -81,3 +81,12 @@ insert time: 175.8802 sec
 insert time / doc: 1.76 ms
 inserts / sec: 568.568833
 </pre>
+
+The tests above were done with a previous version. With the latest release, the bulk inserts are done with Symfony2/Doctrine transactions. Have a look at the speed improvement.
+
+<pre>
+doc insert count: 100000
+insert time: 68.494 sec
+insert time / doc: 0.68 ms
+inserts / sec: 1459.9819
+</pre>
